@@ -1,5 +1,5 @@
 <script setup>
-import {reactive, ref} from 'vue'
+import {onMounted, reactive, ref} from 'vue'
 
 defineProps({
   msg: String,
@@ -7,8 +7,9 @@ defineProps({
 
 const username = ref('isIf')
 const text = ref('')
-
+const loading = ref(false)
 const data = ref([] )
+const number =ref(0)
 const isActive = ref(true)
 const object  = reactive({
   phone:'2020000',
@@ -33,23 +34,40 @@ function onActive() {
     })
   }
 }
+function onItem(item,index){
+  console.log(item)
+  console.log(index)
+}
+
+onMounted(()=>{
+  console.log("created component")
+  loading.value =true;
+  setTimeout(()=>{
+    onActive()
+    loading.value=false;
+  },10000)
 
 
+  setInterval(()=>{
+    console.log('all')
+    number.value++
+  },500)
+
+})
 </script>
+
 
 <template>
   <h1>{{ msg }}</h1>
 
+  <h2>{{number}}</h2>
 
-  {{data.length}}
-  {{data}}
-  <div v-if="data.length<=0">
-    isEmpty
-  </div>
+  <p v-if="loading">loading...</p>
 
   <ul v-else>
     <li v-for="(item,index) in data">
-      username:{{item.ceo}} age: {{item.age}}
+      <div :class="item.age===2 || item.age===10?'color-green':index===3?'color-blue':'color-red'" @click="onItem(item,index)">color item</div>
+<!--     {{index}}  username:{{item.ceo}} age: {{item.age}}-->
     </li>
   </ul>
 
@@ -63,5 +81,15 @@ function onActive() {
 <style scoped>
 .read-the-docs {
   color: red;
+}
+
+.color-green{
+  color: green;
+}
+.color-red{
+  color: red;
+}
+.color-blue{
+  color: blue;
 }
 </style>
