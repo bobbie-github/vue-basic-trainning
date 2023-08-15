@@ -1,7 +1,8 @@
 <script setup>
 
-import {defineProps} from 'vue'
+import {defineProps,defineEmits} from 'vue'
 
+let emit = defineEmits(['onChange'])
 const prop = defineProps({
   my_id:{
     required:true
@@ -12,17 +13,21 @@ const prop = defineProps({
   }
 })
 
+function isEmit(val) {
+  emit('onChange', "data-computer")
+}
 
 </script>
 
 <template>
  <div>
    <h1>
-     Item component {{prop.my_id}}
+       Item component {{prop.my_id}}
    </h1>
    <ul>
      <li v-for="(item,index) in items">
        <p>{{ item }}</p>
+       <button @click="isEmit(item)">Emit</button>
      </li>
    </ul>
  </div>

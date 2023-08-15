@@ -20,12 +20,16 @@ let artists =  [
   {name: 'ed-Sheeran', genre: 'pop', country: 'United Kingdom'}
 ]
 
+function aferOnChange(val) {
+  console.log("aferOnChange",val)
+}
+
 </script>
 
 <template>
 <div>
   <h1>Component {{route.params.user_id}}</h1>
-  <Item  :my_id="route.params.user_id"  :items="artists"></Item>
+  <Item  :my_id="route.params.user_id"  :items="artists" @onChange="aferOnChange"></Item>
 </div>
 </template>
 
