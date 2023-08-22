@@ -15,7 +15,13 @@ const router = createRouter({
             path: '/component-url/:user_id',
             name:'cpn',
             component: ()=>import('../components/cpn.vue')
-        }
+        },
+        {
+            path: '/syntax',
+            name:'syntax',
+            component: ()=>import('../components/Syntax.vue')
+        },
+
     ]
 })
 

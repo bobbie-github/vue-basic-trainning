@@ -4,9 +4,11 @@ import {useRoute} from "vue-router";
 
 //component
 import Item from "./item.vue";
+import {ref} from "vue";
 
 const route = useRoute()
 
+let preview = ref('')
 let artists =  [
   {name: 'Davido', genre: 'afrobeats', country: 'Nigeria'},
   {name: 'Burna Boy', genre: 'afrobeats', country: 'Nigeria'},
@@ -22,12 +24,15 @@ let artists =  [
 
 function aferOnChange(val) {
   console.log("aferOnChange",val)
+  preview.value = val
 }
 
 </script>
 
 <template>
 <div>
+
+  <p>{{preview}}</p>
   <h1>Component {{route.params.user_id}}</h1>
   <Item  :my_id="route.params.user_id"  :items="artists" @onChange="aferOnChange"></Item>
 </div>

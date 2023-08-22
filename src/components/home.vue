@@ -5,9 +5,11 @@ import {useRouter} from 'vue-router'
 const router = useRouter()
 
 function routerFunction() {
-
   router.push({name: 'cpn',params:{user_id:12345687}})
-  // router.push({path: 'component-url'})
+}
+
+function routerSyntax() {
+  router.push({name: 'syntax' })
 }
 </script>
 
@@ -15,6 +17,7 @@ function routerFunction() {
 <div>
   <h1>Home Page</h1>
   <button @click="routerFunction">go component</button>
+  <button @click="routerSyntax">go Syntax</button>
 </div>
 </template>
 

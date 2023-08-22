@@ -14,7 +14,7 @@ const prop = defineProps({
 })
 
 function isEmit(val) {
-  emit('onChange', "data-computer")
+  emit('onChange', val)
 }
 
 </script>
