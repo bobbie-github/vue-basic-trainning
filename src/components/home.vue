@@ -10,6 +10,8 @@ function routerFunction() {
 
 function routerSyntax() {
   router.push({name: 'syntax' })
+}function routerAdmin() {
+  router.push({name: 'admin' })
 }
 </script>
 
@@ -18,6 +20,7 @@ function routerSyntax() {
   <h1>Home Page</h1>
   <button @click="routerFunction">go component</button>
   <button @click="routerSyntax">go Syntax</button>
+  <button @click="routerAdmin">go Admin</button>
 </div>
 </template>
 
