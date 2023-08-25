@@ -47,10 +47,16 @@ const router = createRouter({
             name:'provide_inject',
             component: ()=>import('../components/provide_inject.vue'),
         },
+        {
+            path: '/state_manage',
+            name:'state_manage',
+            component: ()=>import('../components/state_manage/index.vue'),
+        },
 
     ]
 })
 router.beforeEach((to, from, next) => {
+    console.log(to.meta)
     if (to.meta.requiresAuth) {
         if (!authState.isAuthenticated.value) {
             next('/login');
@@ -74,6 +80,7 @@ router.beforeEach((to, from, next) => {
             }
         }
     }
+
 
     // Continue navigation for public routes and other cases
     next();
