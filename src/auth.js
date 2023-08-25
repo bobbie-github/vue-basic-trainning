@@ -3,8 +3,8 @@ import {reactive, toRefs} from "vue";
 
 const state = reactive({
     isAuthenticated: true,
-    user:'user',
-    token: 'hastoken'
+    user:'admin',
+    token: localStorage.getItem('token')
 });
 
 
