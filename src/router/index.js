@@ -9,7 +9,7 @@ const router = createRouter({
             component: ()=>import('../components/home.vue')
         },
         {
-            path: '/hello',
+            path: '/',
             name:'hello',
             component: ()=>import('../components/HelloWorld.vue'),
             meta: { requiresAuth: true,requiresRole: 'user' }
@@ -29,7 +29,8 @@ const router = createRouter({
         {
             path: '/syntax',
             name:'syntax',
-            component: ()=>import('../components/Syntax.vue')
+            component: ()=>import('../components/Syntax.vue'),
+            meta: { requiresAuth: false}
 
         },
         {
@@ -51,13 +52,14 @@ const router = createRouter({
     ]
 })
 router.beforeEach((to, from, next) => {
+//thar requiresAuth = true sa mard khao nar dai
     if (to.meta.requiresAuth) {
         if (!authState.isAuthenticated.value) {
             next('/login');
             return;
         }
     }
-
+// thar requiresRole = user sa mard khao dai thar hark br hao man hai pai nar unauthorized
     if (to.meta.requiresRole) {
         if (authState.user.value !== to.meta.requiresRole) {
             next('/unauthorized');
@@ -75,7 +77,7 @@ router.beforeEach((to, from, next) => {
         }
     }
 
-    // Continue navigation for public routes and other cases
+// Continue navigation for public routes and other cases
     next();
 });
 

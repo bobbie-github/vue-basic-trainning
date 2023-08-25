@@ -65,7 +65,7 @@ onMounted(()=>{
   <p v-if="loading">loading...</p>
 
   <ul v-else>
-    <li v-for="(item,index) in data">
+    <li v-for="(item,index) in data" :key="index">
       <div :class="item.age===2 || item.age===10?'color-green':index===3?'color-blue':'color-red'" @click="onItem(item,index)">color item</div>
 <!--     {{index}}  username:{{item.ceo}} age: {{item.age}}-->
     </li>
